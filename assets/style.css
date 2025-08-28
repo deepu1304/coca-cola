@@ -1,0 +1,38 @@
+main {
+    background: #f6f9fb;
+}
+.stTitle {
+    color: #1769aa;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.6em;
+    letter-spacing: 2px;
+}
+.stDataFrame {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 6px 16px #e0e7ef;
+}
+div[data-testid="metric-container"] {
+    background: #e3eefc;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px #b2d4f7;
+    padding: 10px 16px;
+}
+.stSidebar {
+    background: linear-gradient(135deg,#3081d0 0%,#79c2d0 100%);
+    color: #fff;
+}
+
+[data-testid="stDownloadButton"] > button {
+    color: #1769aa !important;
+    font-weight: bold;
+    font-size: 1em;
+}
+
+button[kind="primary"] {
+    background-color: #1769aa !important;
+    color: white !important;
+    font-weight: bold;
+}
+
+
