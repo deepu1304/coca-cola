@@ -1,38 +1,76 @@
 main {
     background: #f6f9fb;
-}
-.stTitle {
-    color: #1769aa;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 2.6em;
-    letter-spacing: 2px;
-}
-.stDataFrame {
-    background-color: #fff;
-    border-radius: 12px;
-    box-shadow: 0 6px 16px #e0e7ef;
-}
-div[data-testid="metric-container"] {
-    background: #e3eefc;
-    border-radius: 12px;
-    box-shadow: 0 2px 4px #b2d4f7;
-    padding: 10px 16px;
-}
-.stSidebar {
-    background: linear-gradient(135deg,#3081d0 0%,#79c2d0 100%);
-    color: #fff;
-}
+    main {
+        background: #f6f9fb;
+    }
+    
+    .stTitle {
+        color: #1769aa;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 2.6em;
+        letter-spacing: 2px;
+    }
+    
+    .stDataFrame {
+        background-color: #fff;
+        border-radius: 12px;
+        box-shadow: 0 6px 16px #e0e7ef;
+    }
+    
+    div[data-testid="metric-container"] {
+        background: #e3eefc;
+        border-radius: 12px;
+        box-shadow: 0 2px 4px #b2d4f7;
+        padding: 10px 16px;
+    }
+    
+    .stSidebar {
+        background: linear-gradient(135deg,#3081d0 0%,#79c2d0 100%);
+        color: #fff;
+    }
+    
+    [data-testid="stDownloadButton"] > button {
+        color: #1769aa !important;
+        font-weight: bold;
+        font-size: 1em;
+    }
+    
+    /* Red Simulate Scenario Button */
+    button[kind="primary"] {
+        background-color: #dc143c !important;
+        color: white !important;
+        font-weight: bold;
+        border: 2px solid #dc143c !important;
+        border-radius: 8px !important;
+    }
+    
+    button[kind="primary"]:hover {
+        background-color: #b91c3c !important;
+        border: 2px solid #b91c3c !important;
+        transform: translateY(-1px);
+    }
+    
+    button[kind="primary"]:active {
+        background-color: #991b1b !important;
+        border: 2px solid #991b1b !important;
+    }
+    
+    /* Alternative targeting for Streamlit buttons */
+    .stButton > button[kind="primary"] {
+        background-color: #dc143c !important;
+        color: white !important;
+        font-weight: bold !important;
+        border: 2px solid #dc143c !important;
+    }
+    
+    /* Specific targeting for sidebar buttons */
+    .stSidebar button[kind="primary"] {
+        background-color: #dc143c !important;
+        color: white !important;
+        font-weight: bold !important;
+        border: 2px solid #dc143c !important;
+    }
+    
 
-[data-testid="stDownloadButton"] > button {
-    color: #1769aa !important;
-    font-weight: bold;
-    font-size: 1em;
+
 }
-
-button[kind="primary"] {
-    background-color: #1769aa !important;
-    color: white !important;
-    font-weight: bold;
-}
-
-

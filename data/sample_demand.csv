@@ -1,5 +1,19 @@
-week,dc,sku,demand
-1,North,Regular,60000
-1,South,Regular,50000
-1,North,Diet,40000
-1,South,Diet,30000
+import pandas as pd
+
+def generate_sample_data():
+    sample_data = pd.DataFrame({
+        'sku': ['Regular', 'Regular', 'Diet', 'Diet', 'Regular', 'Regular', 'Diet', 'Diet',
+                'Regular', 'Regular', 'Diet', 'Diet', 'Regular', 'Regular', 'Diet', 'Diet'],
+        'dc': ['North', 'South', 'North', 'South'] * 4,
+        'week': [1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4],
+        'demand': [50000, 60000, 30000, 35000, 
+                  52000, 58000, 32000, 37000,
+                  48000, 62000, 29000, 38000,
+                  55000, 65000, 33000, 40000]
+    })
+    return sample_data
+
+if __name__ == "__main__":
+    sample_data = generate_sample_data()
+    sample_data.to_csv('sample_demand.csv', index=False)
+

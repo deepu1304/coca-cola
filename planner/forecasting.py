@@ -1,20 +1,27 @@
 import pandas as pd
 
-def forecast_demand(history_df, year=2025, periods=8):
-    history_df = history_df.copy()
-    history_df['week_str'] = history_df['week'].apply(lambda x: f"{int(x):02d}")
-    history_df['ds'] = pd.to_datetime(str(year) + '-' + history_df['week_str'] + '-1', format='%G-%V-%u')
-    history_df = history_df.rename(columns={'demand': 'y'})
+def forecast_demand(history_df, year=2025, periods=6):
+    if history_df.empty:
+        return pd.DataFrame()
+        
+    forecast_results = []
+    
+    for (sku, dc), group in history_df.groupby(['sku', 'dc']):
+        try:
+            avg_demand = max(1000, group['demand'].mean())
+            last_week = group['week'].max()
+            
+            for i in range(periods):
+                week = last_week + i + 1
+                demand = max(500, int(avg_demand * (0.9 + 0.2 * (i % 3))))
+                forecast_results.append(pd.DataFrame({
+                    'sku': [sku], 'dc': [dc], 'week': [week], 'demand': [demand]
+                }))
+                
+        except Exception as e:
+            continue
+    
+    return pd.concat(forecast_results, ignore_index=True) if forecast_results else pd.DataFrame()
 
-    from prophet import Prophet
-    model = Prophet()
-    model.fit(history_df[['ds', 'y']])
 
-    future = model.make_future_dataframe(periods=periods, freq='W-MON')
-    forecast = model.predict(future)
-    forecast_df = forecast[['ds', 'yhat']].tail(periods).copy()
-    forecast_df['week'] = forecast_df['ds'].dt.isocalendar().week
-    forecast_df = forecast_df.rename(columns={'yhat': 'demand_forecast'})[['week', 'demand_forecast']]
-
-    return forecast_df
 
